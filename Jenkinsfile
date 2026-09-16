@@ -3,21 +3,16 @@ pipeline {
 
     stages {
 
-        stage('Hello') {
+        stage('Check Environment') {
             steps {
-                echo 'Hello from Git'
+                sh 'uname -a'
+                sh 'python3 --version'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building application...'
+                sh 'python3 -m pytest'
             }
         }
     }
